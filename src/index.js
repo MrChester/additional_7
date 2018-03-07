@@ -23,4 +23,15 @@ module.exports = function solveSudoku(gameBoard) {
         return true;
     }
 
+    function checkColumn(gameBoard, boardColumn, boardNumValue) {
+        for (var i = 0; i < gameBoard.length; i++) {
+            if (gameBoard[i][boardColumn] === boardNumValue) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
 }
