@@ -10,7 +10,7 @@ module.exports = function solveSudoku(gameBoard) {
                 }
             }
         }
-        console.log(zeroPositionsArr);
+        // console.log(zeroPositionsArr);
         return zeroPositionsArr;
     }
 
@@ -57,9 +57,9 @@ module.exports = function solveSudoku(gameBoard) {
     }
 
     function finalCheck(gameBoard, boardColumn, boardRow, boardNumValue) {
-        if (this.checkRow(gameBoard, boardRow, boardNumValue) &&
-            this.checkColumn(gameBoard, boardColumn, boardNumValue) &&
-            this.checkSquare(gameBoard, boardColumn, boardRow, boardNumValue)) {
+        if (checkRow(gameBoard, boardRow, boardNumValue) &&
+            checkColumn(gameBoard, boardColumn, boardNumValue) &&
+            checkSquare(gameBoard, boardColumn, boardRow, boardNumValue)) {
             return true;
         } else {
             return false;
@@ -85,7 +85,7 @@ module.exports = function solveSudoku(gameBoard) {
 
             while (!wantedNum && boardNumValue <= limit) {
 
-                if (this.finalCheck(gameBoard, boardColumn, boardRow, boardNumValue)) {
+                if (finalCheck(gameBoard, boardColumn, boardRow, boardNumValue)) {
                     wantedNum = true;
                     gameBoard[boardRow][boardColumn] = boardNumValue;
                     i++;
