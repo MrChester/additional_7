@@ -56,4 +56,15 @@ module.exports = function solveSudoku(gameBoard) {
         return true;
     }
 
+    function finalCheck(gameBoard, boardColumn, boardRow, boardNumValue) {
+        if (this.checkRow(gameBoard, boardRow, boardNumValue) &&
+            this.checkColumn(gameBoard, boardColumn, boardNumValue) &&
+            this.checkSquare(gameBoard, boardColumn, boardRow, boardNumValue)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }
