@@ -32,6 +32,28 @@ module.exports = function solveSudoku(gameBoard) {
         return true;
     }
 
+    function checkSquare(gameBoard, boardColumn, boardRow, boardNumValue) {
+        // square 3X3
+        var boardColumnCorner = 0,
+            boardRowCorner = 0,
+            boardSquareSize = 3;
 
+        while (boardColumn >= boardColumnCorner + boardSquareSize) {
+            boardColumnCorner += boardSquareSize;
+        }
+
+        while (boardRow >= boardRowCorner + boardSquareSize) {
+            boardRowCorner += boardSquareSize;
+        }
+
+        for (var i = boardRowCorner; i < boardRowCorner + boardSquareSize; i++) {
+            for (var j = boardColumnCorner; j < boardColumnCorner + boardSquareSize; j++) {
+                if (gameBoard[i][j] === boardNumValue) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 }
