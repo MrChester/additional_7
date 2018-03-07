@@ -1,4 +1,5 @@
 module.exports = function solveSudoku(gameBoard) {
+
     function zeroPositions(gameBoard) {
         var zeroPositionsArr = [];
 
@@ -12,4 +13,14 @@ module.exports = function solveSudoku(gameBoard) {
         console.log(zeroPositionsArr);
         return zeroPositionsArr;
     }
+
+    function checkRow(gameBoard, boardRow, boardNumValue) {
+        for (var i = 0; i < gameBoard[boardRow].length; i++) {
+            if (gameBoard[boardRow][i] === boardNumValue) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
