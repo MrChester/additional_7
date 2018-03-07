@@ -66,5 +66,47 @@ module.exports = function solveSudoku(gameBoard) {
         }
     }
 
+    var zeroPositions = zeroPositions(gameBoard);
 
+    function finalSolution(gameBoard, zeroPositions) {
+        var limit = 9,
+            boardRow,
+            boardColumn,
+            boardNumValue,
+            wantedNum;
+
+        for (var i = 0; i < zeroPositions.length;) {
+            boardRow = zeroPositions[i][0];
+            boardColumn = zeroPositions[i][1];
+            // console.log(zeroPositions[i][0]);
+            // console.log(zeroPositions[i][1]);
+            boardNumValue = gameBoard[boardRow][boardColumn] + 1;
+            wantedNum = false;
+
+            while (!wantedNum && boardNumValue <= limit) {
+
+                if (this.finalCheck(gameBoard, boardColumn, boardRow, boardNumValue)) {
+                    wantedNum = true;
+                    gameBoard[boardRow][boardColumn] = boardNumValue;
+                    i++;
+                } else {
+                    boardNumValue++;
+                }
+            }
+            if (!wantedNum) {
+                gameBoard[boardRow][boardColumn] = 0;
+                i--;
+            }
+        }
+
+        gameBoard.forEach(function(row) {
+            row.join();
+        });
+
+        return gameBoard;
+    }
+
+    var temp = finalSolution(gameBoard, zeroPositions);
+
+    return temp;
 }
